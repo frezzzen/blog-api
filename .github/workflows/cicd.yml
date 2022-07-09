@@ -35,7 +35,6 @@ jobs:
            script: |
              cd /projects/blog/backend # we move into our app's folder
              git pull # we pull any changes from git
-             yarn prune # we remove any unused dependencies
-             yarn # we install any missing dependencies
+             yarn install# we install any missing dependencies
              yarn build # we build our app
              pm2 reload blog-api # we reload the app via PM2

@@ -27,12 +27,9 @@ async function bootstrap() {
     }),
   );
 
-  app.setGlobalPrefix('api');
-
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Blog API')
     .setVersion('1.0')
-    .setBasePath('api')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);

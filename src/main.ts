@@ -10,7 +10,8 @@ import * as fs from 'fs';
 async function bootstrap() {
   let httpsOptions;
 
-  if (process.env.mode === 'production') {
+  console.log('Proccess', JSON.stringify(process.env, null, 2))
+  if (process.env.MODE === 'production') {
     httpsOptions = {
       key: fs.readFileSync(
         '/etc/letsencrypt/live/blog.frezzzen.com/privkey.pem',

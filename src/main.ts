@@ -10,7 +10,7 @@ import * as fs from 'fs';
 async function bootstrap() {
   let httpsOptions;
 
-  console.log('Proccess', JSON.stringify(process.env, null, 2))
+  console.log('Proccess', JSON.stringify(process.env, null, 2));
   if (process.env.MODE === 'production') {
     httpsOptions = {
       key: fs.readFileSync(
@@ -47,6 +47,7 @@ async function bootstrap() {
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Blog API')
     .setVersion('1.0')
+    .addServer(process.env.MODE === 'production' ? 'api' : '')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);

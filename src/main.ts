@@ -44,12 +44,13 @@ async function bootstrap() {
     }),
   );
 
+  console.log('IS PRODUCTION', process.env.MODE === 'production');
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Blog API')
     .setVersion('1.0')
     .setBasePath('api')
-    .addServer(process.env.MODE == 'production' ? 'api' : '')
-    .setBasePath(process.env.MODE == 'production' ? 'api' : '')
+    .addServer(process.env.MODE === 'production' ? 'api' : '')
+    .setBasePath(process.env.MODE === 'production' ? 'api' : '')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);

@@ -50,7 +50,6 @@ async function bootstrap() {
     .setVersion('1.0')
     .setBasePath('api')
     .addServer(process.env.MODE === 'production' ? 'api' : '')
-    .setBasePath(process.env.MODE === 'production' ? 'api' : '')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);

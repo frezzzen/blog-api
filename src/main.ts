@@ -47,7 +47,6 @@ async function bootstrap() {
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Blog API')
     .setVersion('1.0')
-    .addServer(process.env.MODE === 'production' ? '/api' : '')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);

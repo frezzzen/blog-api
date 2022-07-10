@@ -51,7 +51,11 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup('swagger', app, document, {
+    useGlobalPrefix: true,
+    url: '/api',
+    swaggerUrl: '/api',
+  });
 
   app.use(passport.initialize());
   app.use(passport.session());

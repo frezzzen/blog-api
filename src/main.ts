@@ -5,9 +5,25 @@ import * as passport from 'passport';
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as fs from 'fs';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  let httpsOptions;
+
+  if (process.env.mode === 'production') {
+    httpsOptions = {
+      key: fs.readFileSync(
+        '/etc/letsencrypt/live/blog.frezzzen.com/privkey.pem',
+      ),
+      cert: fs.readFileSync(
+        '/etc/letsencrypt/live/blog.frezzzen.com/fullchain.pem',
+      ),
+    };
+  }
+
+  const app = await NestFactory.create(AppModule, {
+    httpsOptions,
+  });
 
   app.useGlobalPipes(
     new ValidationPipe({

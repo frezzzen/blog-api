@@ -31,7 +31,7 @@ jobs:
            host: ${{ secrets.HOST }}
            username: ${{ secrets.USERNAME }}
            password: ${{ secrets.PASSWORD }}
-           port: ${{ secret.PORT }}
+           port: ${{ secrets.PORT }}
            script: |
              cd ~/projects/blog/backend # we move into our app's folder
              git pull # we pull any changes from git
